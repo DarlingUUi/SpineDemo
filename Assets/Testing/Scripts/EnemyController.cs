@@ -33,9 +33,11 @@ public class EnemyController : MonoBehaviour
         if (isSlope)
         {
             v3Velocity = new Vector3(0.6f, Physics.gravity.y, 0);
+            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
         else
         {
+            GetComponent<Renderer>().material.SetColor("_Color", Color.white);
             v3Velocity.x = 0.2f;
             if (!isGrounded)
             {
