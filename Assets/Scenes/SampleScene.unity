@@ -370,6 +370,7 @@ MonoBehaviour:
   m_characterController: {fileID: 0}
   m_state: 0
   m_skeletonAnimation: {fileID: 328272188}
+  m_rdEnemy: {fileID: 1345764435}
 --- !u!143 &328272193
 CharacterController:
   m_ObjectHideFlags: 0

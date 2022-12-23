@@ -30,28 +30,19 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isSlope)
+        v3Velocity.x = 0.2f;
+        if (!isGrounded)
         {
-            v3Velocity = new Vector3(0.6f, Physics.gravity.y, 0);
-            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-        }
-        else
-        {
-            GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-            v3Velocity.x = 0.2f;
-            if (!isGrounded)
+            if (wasGrounded)
             {
-                if (wasGrounded)
-                {
-                    v3Velocity.y = 0;
-                }
-                else
-                {
-                    v3Velocity.y = Physics.gravity.y;
-                }
+                v3Velocity.y = 0;
             }
-            wasGrounded = isGrounded;
+            else
+            {
+                v3Velocity.y = Physics.gravity.y;
+            }
         }
+        wasGrounded = isGrounded;
         m_characterController.Move(v3Velocity);
     }
     #endregion

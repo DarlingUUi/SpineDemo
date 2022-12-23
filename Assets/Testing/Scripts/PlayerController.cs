@@ -25,6 +25,7 @@ namespace Spine.Unity
         public CharacterController m_characterController;
         public PlayerState m_state;
         public SkeletonAnimation m_skeletonAnimation;
+        public Renderer m_rdEnemy;
 
         #endregion
 
@@ -66,9 +67,11 @@ namespace Spine.Unity
                 v3Velocity = new Vector3(0.6f, Physics.gravity.y, 0);
                 m_skeletonAnimation.AnimationName = m_dicState[m_state.ToString()];
                 m_skeletonAnimation.skeleton.SetColor(Color.red);
+                m_rdEnemy.material.SetColor("_Color", Color.red);
             }
             else
             {
+                m_rdEnemy.material.SetColor("_Color", Color.white);
                 m_skeletonAnimation.skeleton.SetColor(Color.white);
                 float _h = Input.GetAxis("Horizontal");
                 isGrounded = m_characterController.isGrounded;
