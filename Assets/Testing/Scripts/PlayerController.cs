@@ -65,9 +65,11 @@ namespace Spine.Unity
             {
                 v3Velocity = new Vector3(0.6f, Physics.gravity.y, 0);
                 m_skeletonAnimation.AnimationName = m_dicState[m_state.ToString()];
+                m_skeletonAnimation.skeleton.SetColor(Color.red);
             }
             else
             {
+                m_skeletonAnimation.skeleton.SetColor(Color.white);
                 float _h = Input.GetAxis("Horizontal");
                 isGrounded = m_characterController.isGrounded;
                 if (Mathf.Abs(_h) > 0 && Mathf.Abs(_h) < 0.5f)
@@ -97,10 +99,14 @@ namespace Spine.Unity
         }
         #endregion
 
+        #region Collision Event
+
         void OnControllerColliderHit(ControllerColliderHit hit)
         {
             isSlope = hit.gameObject.tag == "slope";
             m_state = PlayerState.hoverboard;
         }
+
+        #endregion
     }
 }
